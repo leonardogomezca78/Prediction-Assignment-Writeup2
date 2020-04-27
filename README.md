@@ -56,7 +56,7 @@ There were 107 variables with more than 95% of the data missing. Those variables
 
 A correlation among variables is analysed before proceeding to the modeling procedures.
 
-
+![leo1](Correlation matrix analysis.png) 
 
 ### Code_R 
 
