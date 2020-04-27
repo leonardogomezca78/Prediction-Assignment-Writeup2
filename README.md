@@ -46,13 +46,21 @@ Continuing with the work, an exploration of the data is made
 
 Note that both dataset are having the same variables (160 variables). Next is try remove the near zero variance variables or columns that contain N/A missing values.
 
-####Code_R train <- train[, colSums(is.na(train)) == 0] test <- test[, colSums(is.na(test)) == 0] classe <- train$classe trainR <- grepl("^X|timestamp|window", names(train)) train <- train[, !trainR] trainM <- train[, sapply(train, is.numeric)] trainM$classe <- classe testR <- grepl("^X|timestamp|window", names(test)) test<- test[, !testR] testM <- test[, sapply(test, is.numeric)]
+### Code_R 
+
+	train <- train[, colSums(is.na(train)) == 0] test <- test[, colSums(is.na(test)) == 0] classe <- train$classe trainR <- 	grepl("^X|timestamp|window", names(train)) train <- train[, !trainR] trainM <- train[, sapply(train, is.numeric)] trainM$classe <- classe testR <- grepl("^X|timestamp|window", names(test)) test<- test[, !testR] testM <- test[, sapply(test, is.numeric)]
 
 There were 107 variables with more than 95% of the data missing. Those variables were removed from the data as well. If we built a classification model based on those variables, then we can expect most of the time the variable is missing and therefore we cannot apply the classification rules on them. Therefore, building a model based on variables that’s mostly missing is not practical.
 
-##Correlation matrix analysis A correlation among variables is analysed before proceeding to the modeling procedures.
+##cCorrelation matrix analysis 
 
-####Code_R corMatrix <- cor(TrainSet[, -54]) corrplot(corMatrix, order = "FPC", method = "color", type = "lower", tl.cex = 0.8, tl.col = rgb(0, 0, 0))
+A correlation among variables is analysed before proceeding to the modeling procedures.
+
+
+
+### Code_R 
+
+	corMatrix <- cor(TrainSet[, -54]) corrplot(corMatrix, order = "FPC", method = "color", type = "lower", tl.cex = 0.8, tl.col = rgb(0, 0, 0))
 
 ![leo1](Correlation matrix analysis.png)
 
